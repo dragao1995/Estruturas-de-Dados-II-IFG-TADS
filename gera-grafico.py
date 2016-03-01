@@ -2,13 +2,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def f(n):
-    return np.power(n,2)
+    return 2*np.power(n,2)
 
 def g(n):
-	return 10000 * np.log10(np.log10(n))	
+	return np.power(n,2)+n	
 
 #define intervalo e amostragem
-amostra = np.arange(5, 100.0, 0.5)
+amostra = np.arange(0, 1000, 0.5)
 
 plt.plot(amostra, f(amostra), 'b-',label="f(n)")
 plt.plot(amostra, g(amostra), 'r--',label="g(n)")
