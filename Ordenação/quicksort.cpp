@@ -4,41 +4,35 @@
 #include <algorithm>
 using namespace std;
 
-void heapify(vector<int>&v, int i,int heapsize){
-    int l,r;
-    while(i<heapsize){
-        l = 2*i+1;
-        r = 2*i+2;
-        int maior = i;
-        if(l<heapsize && v[l]>v[i]){
-            maior = l;
+
+
+
+int partition(vector<int>& v,int l,int r){
+    int k = l; //marca o fim da primeira partição
+    int i = l; //elemento a ser analizado
+    int pivo = r; //pivo é o elemento do final
+    while(i<r){
+        if(v[i]<=v[pivo]){
+            swap(v[k],v[i]);
+            k++;
         }
-        if(r<heapsize && v[r]>v[maior]){
-            maior = r;
-        }
-        if(maior!=i){
-            swap(v[i],v[maior]);
-            i = maior;
-        }
-        else{
-            break;
-        }
+        i++;
+    }
+    swap(v[k],v[pivo]); //colocamos o pivo na posição correta
+    return k; //retornamos a posição do pivo
+}
+
+void recursive_quicksort(vector<int>& v,int l,int r){
+    if(l<r){
+        int p = partition(v,l,r);
+        recursive_quicksort(v,l,p-1);
+        recursive_quicksort(v,p+1,r);
     }
 }
 
-void makeheap(vector<int>& v){
-    for(int i=v.size()/2;i>=0;i--){
-        heapify(v,i,v.size());
-    }
-}
 
-
-void heapsort(vector<int>& v){
-    makeheap(v);
-    for(int i=v.size()-1;i>0;i--){
-        swap(v[0],v[i]);
-        heapify(v,0,i);
-    }
+void quicksort(vector<int>& v){
+    recursive_quicksort(v,0,v.size()-1);
 }
 
 
@@ -58,8 +52,8 @@ int main(){
     for(int i=0;i<n;i++){
         cout << "v[" << i << "] = " << v[i] << "\n";
     }
-    cout << "\nHeapsort!\n";
-    heapsort(v);
+    cout << "\nQuicksort!\n";
+    quicksort(v);
     cout << "Imprimindo vetor depois da ordenação.\n";
     for(int i=0;i<n;i++){
         cout << "v[" << i << "] = " << v[i] << "\n";
