@@ -7,5 +7,5 @@ $g++ arquivofonte.cpp -std=c++11 -o nomedoexecutavel
 ```
 ## Contribuidores
 * Alex Sandro da Silva Magalhães Júnior
-** Quicksort em Java
+	* Quicksort em Java
 
