@@ -7,8 +7,7 @@ import java.util.Random;
 public class InsertionsortJava {
 
 	public static void main(String[] args) {
-
-		   
+		
 	    int n = 1000;
 	    Random rng = new Random();// random-number engine used (Mersenne-Twister in this case)
 	    List<Integer> v = new ArrayList<Integer>();

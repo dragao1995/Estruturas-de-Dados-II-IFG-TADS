@@ -1,11 +1,6 @@
 /**
 Autor: Daniel Saad Nogueira Nunes
-Nome do Problema:
-ID do Problema: 
-url do Problema: 
-Técnica:
-Complexidade:
-Comentários:
+Seleção do k-ésimo em tempo linear.
 **/
 
 #include <iostream>

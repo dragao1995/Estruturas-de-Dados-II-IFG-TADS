@@ -32,11 +32,11 @@ public class quicksort {
 	}
 
 	private static void recursive_quicksort(List<Integer> v, int l, int r) {
-		 if(l<r){
-		        int p = partition(v,l,r);
-		        recursive_quicksort(v,l,p-1);
-		        recursive_quicksort(v,p+1,r);
-		    }
+		if(l<r){
+		    int p = partition(v,l,r);
+		    recursive_quicksort(v,l,p-1);
+		    recursive_quicksort(v,p+1,r);
+		}
 		
 	}
 
@@ -55,10 +55,8 @@ public class quicksort {
 	        i++;
 	    }
 	    int t = v.get(k);
-	      v.set(k, v.get(i));
-	      v.set(i,t);//colocamos o pivo na posição correta
+	    v.set(k, v.get(i));
+	    v.set(i,t);//colocamos o pivo na posição correta
 	    return k; //retornamos a posição do pivo
 	}
-
-	
 }
