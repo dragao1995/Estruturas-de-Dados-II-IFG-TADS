@@ -5,11 +5,11 @@
 using namespace std;
 
 int get_max(const vector<int>& v){
-	int m  = numeric_limits<int>::min();
-	for(int i=0;i<v.size();i++){
-		m = max(m,v[i]);
-	}
-	return m;
+    int m  = numeric_limits<int>::min();
+    for(int i=0;i<v.size();i++){
+        m = max(m,v[i]);
+    }
+    return m;
 }
 void countingsort(vector<int>& v, int exp){
     vector<int> v2(v); //cria uma cópia de v
@@ -27,10 +27,10 @@ void countingsort(vector<int>& v, int exp){
 }
 
 void radixsort(vector<int>& v){
-	int m = get_max(v);
-	for(int exp=1;m/exp>0;exp*=10){
-		countingsort(v,exp);
-	}
+    int m = get_max(v);
+    for(int exp=1;m/exp>0;exp*=10){
+        countingsort(v,exp);
+    }
 }
 
 int main(){
