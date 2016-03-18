@@ -12,61 +12,76 @@ Comentários:
 #include <vector>
 #include <cmath>
 #include <algorithm>
+#include <numeric>
 using namespace std;
 
-int partition(vector<int>& v,int pivo,int l,int r){
-	int k = l;
-    for(int i=l;i<=r;i++){
-        if(v[i]<=pivo){
+
+int find_median(vector<int>& v,int l, int size){
+	sort(v.begin()+l,v.begin()+l+size);
+	return(v[l+(size/2)]);
+}
+
+int partition(vector<int>& v,int l,int r,int x){
+	int j;
+	for(j=l;j<=r;j++){
+		if(v[j]==x){
+			break;
+		}
+	}
+	swap(v[j],v[r]);
+    int k = l; //marca o fim da primeira partição
+    int i = l; //elemento a ser analizado
+    int pivo = r; //pivo é o elemento do final
+    while(i<r){
+        if(v[i]<=v[pivo]){
             swap(v[k],v[i]);
             k++;
         }
         i++;
     }
-    return (k-l); //retornamos a posição do pivo em relação ao inicio
+    swap(v[k],v[pivo]); //colocamos o pivo na posição correta
+    return k-l; //retornamos a posição do pivo
 }
+
 
 
 int select_k (vector<int>& v,int k,int l,int r){
-	if(l>=r){
-		return 0;
+    
+	int n = (r-l+1);
+	if(k<0 || k>=n){
+		return numeric_limits<int>::max();
 	}
-	for(int i=0;i<v.size();i++){
-		cout << v[i] << " ";
+	if(n==1){
+		return(v[l]);
 	}
-	cout << "\n";
 	vector<int> medianas;
 	int i;
-	cout << "Ordenando os subvetores\n" << endl;
-	cout << "Medianas = ";
-	int s = ceil((double) v.size()/5);
-	for(i=0;i<s;i++){
-		int begin = 5*i;
-		int end =  min((size_t) 5*(i+1),v.size());
-		sort(v.begin()+ begin ,v.begin()+end);
-		medianas.push_back(v[(begin+end)/2]);
-		cout << v[(begin+end)/2] << " ";
+	for(i=0;i<n/5;i++){
+		int med = find_median(v,l+(i*5),5);
+		medianas.push_back(med);
+	}
+	if(n%5!=0){
+		int med = find_median(v,l+(i*5),n%5);
+		medianas.push_back(med);
 	}
 
-	cout << "\n Selecionando a mediana das medianas\n" << endl;
-	int med = select_k(medianas,medianas.size()/2,0,medianas.size()-1);
-	cout << "Particionando\n" << endl;
-	int kth = partition(v,medianas[med],l,r);
-	if(kth<k){
-		return select_k(v,k-kth,l+kth+1,r);
+    int med = select_k(medianas,medianas.size()/2,0,medianas.size()-1);
+    int kth_pos = partition(v,l,r,med);
+
+    if(kth_pos<k){
+        return select_k(v,k-kth_pos-1,l+kth_pos+1,r);
 	}
-	else if(k<kth){
-		select_k(v,k,l,l+kth-1);
+    else if(k<kth_pos){
+        return select_k(v,k,l,l+kth_pos-1);
 	}
-	return kth;
+    return v[l+kth_pos];
 }
 
 int main(){
-	std::ios::sync_with_stdio(false);
 	vector<int> v = {5,3,1,7,9,2,0,4,6,8};
-	int k = 8;
-	int pos = select_k(v,k,0,v.size()-1);
-	cout << "Posição do " << k << "-esimo = " << pos << "\n";
-	cout << "V[pos] = " << v[pos] << "\n";
+    int k;
+    cin >> k;
+    int kth = select_k(v,k,0,v.size()-1);
+    cout << k << "-ésimo menor elemento = " << kth << "\n";
 	return 0;
 }
