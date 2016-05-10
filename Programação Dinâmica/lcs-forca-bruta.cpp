@@ -13,7 +13,7 @@ Comentários:
 using namespace std;
 
 
-int lcs_forca_bruta(string x, string y, int n,int m){
+int lcs_forca_bruta(const string& x, const string& y, int n,int m){
 	if(n==0 || m==0){
 		return 0;
 	}

@@ -14,7 +14,7 @@ Comentários:
 using namespace std;
 
 
-int lcs_top_down(string x, string y, int n,int m,vector<vector<int>>& c){
+int lcs_top_down(const string& x,const string& y, int n,int m,vector<vector<int>>& c){
 	if(n==0 || m==0){
 		return 0;
 	}
@@ -31,7 +31,7 @@ int lcs_top_down(string x, string y, int n,int m,vector<vector<int>>& c){
 	}
 }
 
-int lcs(string x,string y){
+int lcs(const string& x,const string& y){
 	vector<vector<int>> c(x.size(),vector<int>(y.size(),-1));
 	return(lcs_top_down(x,y,x.size(),y.size(),c));
 }
