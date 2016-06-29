@@ -4,21 +4,21 @@
 using namespace std;
 
 int busca_binaria(const vector<int>& v,int chave){
-	int l = 0;
-	int r = v.size()-1;
+    int l = 0;
+    int r = v.size()-1;
     while(l<=r){
-		int mid = (l+r)/2;
-		if(chave < v[mid]){
-			r = mid -1;
-		}
-		else if(chave > v[mid]){
-			l = mid+1;
-		}
-		else{
-			return mid;
-		}
-	}
-	return -1;
+        int mid = (l+r)/2;
+        if(chave < v[mid]){
+            r = mid -1;
+        }
+        else if(chave > v[mid]){
+            l = mid+1;
+        }
+        else{
+            return mid;
+        }
+    }
+    return -1;
 }
 
 void testa_busca(const vector<int>& v,int chave){

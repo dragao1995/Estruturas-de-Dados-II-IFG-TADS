@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class bubblesortJava {
+public class bubblesort {
 	public static void main(String[] args) {
-
-		   
 	    int n = 1000;
 	    Random rng = new Random();// random-number engine used (Mersenne-Twister in this case)
 	    List<Integer> v = new ArrayList<Integer>();
@@ -27,7 +25,6 @@ public class bubblesortJava {
 	}
 
 	private static void Bubblesort(List<Integer> v) {
-
 	    boolean trocou = true;
 	    for( int i=0;i<v.size() && trocou;i++){
 	        trocou = false;
@@ -39,8 +36,6 @@ public class bubblesortJava {
 	                trocou = true;
 	            }
 	        }
-	    }
-		
+	    }	
 	}
-
 }

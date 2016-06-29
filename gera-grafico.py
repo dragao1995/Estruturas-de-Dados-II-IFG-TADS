@@ -2,13 +2,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def f(n):
-    return n
+    return 100*n*np.log(n)
 
 def g(n):
-	return n-n+50
+	return n*n
 
 #define intervalo e amostragem
-amostra = np.arange(0, 200, 0.5)
+amostra = np.arange(0, 100000, 0.5)
 
 plt.plot(amostra, f(amostra), 'b-',label="f(n)")
 plt.plot(amostra, g(amostra) , 'r--',label="g(n)")

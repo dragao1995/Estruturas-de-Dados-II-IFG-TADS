@@ -3,7 +3,7 @@
 
 using namespace std;
 /**
- * A lista de adjacências representa o grafo em espaço O(|V|^2|)
+ * A matriz de adjacências representa o grafo em espaço O(|V|^2|)
  * e possibilita busca em largura ou profundidade em tempo O(|V|^2)
  */
 

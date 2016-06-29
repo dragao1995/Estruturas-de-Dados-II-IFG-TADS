@@ -7,8 +7,6 @@ import java.util.Random;
 public class HeapsortJava {
 
 	public static void main(String[] args) {
-
-		   
 	    int n = 1000;
 	    Random rng = new Random();// random-number engine used (Mersenne-Twister in this case)
 	    List<Integer> v = new ArrayList<Integer>();
@@ -35,14 +33,12 @@ public class HeapsortJava {
 	  	     v.set(i, t);
 	        heapify(v,0,i);
 	    }
-		
 	}
 
 	private static void makeheap(List<Integer> v) {
-		 for(int i=v.size()/2;i>=0;i--){
+		for(int i=v.size()/2;i>=0;i--){
 		        heapify(v,i,v.size());
-		    }
-		
+		}
 	}
 
 	private static void heapify(List<Integer> v, int i, int heapsize) {
@@ -67,7 +63,6 @@ public class HeapsortJava {
 	        else{
 	            break;
 	        }
-	    }
-		
+	    }	
 	}
-	}
+}

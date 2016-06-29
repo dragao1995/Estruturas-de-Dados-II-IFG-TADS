@@ -8,4 +8,7 @@ $g++ arquivofonte.cpp -std=c++11 -o nomedoexecutavel
 ## Contribuidores
 * Alex Sandro da Silva Magalhães Júnior
 	* Quicksort em Java
-
+	* Heapsort em Java
+	* Insertionsort em Java
+	* Bubblesort em Java
+	* Mergesort em Java
